@@ -60,8 +60,7 @@ var server = http.createServer(function (req, res) {
     console.log('fetching package', packageName)
     console.log('looking up ' + ourPath + ' locally')
 
-    fs.exists(ourPath, function (err, exists) {
-      if (err) throw err
+    fs.exists(ourPath, function (exists) {
       if (exists) {
         console.log('we have', packageName)
         return fs.createReadStream(ourPath).pipe(res)
