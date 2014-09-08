@@ -45,7 +45,7 @@ var server = http.createServer(function (req, res) {
 
         stringified = JSON.stringify(parsed)
         headers = couchResponse.headers
-        headers['content-length'] = stringified.length
+        delete headers['content-length']
 
         res.writeHead(couchResponse.statusCode, headers)
         res.end(stringified)
@@ -64,7 +64,7 @@ var server = http.createServer(function (req, res) {
       if (err) throw err
       if (exists) {
         console.log('we have', packageName)
-        return fs.createreadStream(ourPath).pipe(res)
+        return fs.createReadStream(ourPath).pipe(res)
       }
 
       console.log('failing back to original registry for ' + packageName)
