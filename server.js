@@ -55,7 +55,7 @@ var server = http.createServer(function (req, res) {
   else if (split.length === 3) {
     var packageName = split[0]
     var ourPath = packagePath + '/' + packageName[0] + '/' + packageName +
-      '_attachments/' + split[2];
+      '/_attachments/' + split[2];
 
     console.log('fetching package', packageName)
     console.log('looking up ' + ourPath + ' locally')
